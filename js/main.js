@@ -8,6 +8,7 @@ var app = new Vue({
     message: 'Hello Vue!',
     imgPlaceholder: 'http://placekitten.com/g/80/80',
     loadingPlaces: true,
+    loadingError: false,
     restaurants: []
   },
   created: function () {
@@ -15,13 +16,17 @@ var app = new Vue({
   },
   methods: {
   	getImage: function () {
-		axios.get(urlRestaurants)
+		axios.get(urlRestaurants, { timeout : 10000 })
 			.then(function(res) {
 				console.clear();
 				// vm.asteroids = res.data.near_earth_objects.slice(0, 100);
 				console.log(res.data.records);
 				app.restaurants = res.data.records;
 				app.loadingPlaces = false;
+			}).catch(function(err) {
+				console.log(err);
+				app.loadingPlaces = false;
+				app.loadingError = true;
 			})
 	}
   }

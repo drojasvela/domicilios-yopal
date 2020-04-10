@@ -96,6 +96,11 @@
           </div>
         </li>
       </ul>
+      <div v-if="loadingError" class="card card--error">
+        <img src="img/error-icon.svg" alt="">
+        <h4 class="card__title">Hay un problema!</h4>
+        <p>Recarga la página para ver si ya lo hemos solucionado.</p>
+      </div>
       <div class="add-places">
         <img src="img/location-icon.svg" class="location-icon">
         <p class="no-margin">Conoces otro restaurante que esté abierto durante la cuarentena? <a href="https://airtable.com/shrZj5a0qd2UhXy5x" target="_blank">Inscríbelo acá</a></p>
