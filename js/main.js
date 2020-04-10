@@ -7,14 +7,20 @@ var app = new Vue({
   data: {
     message: 'Hello Vue!',
     imgPlaceholder: 'http://placekitten.com/g/80/80',
+    todayDay: 0,
     loadingPlaces: true,
     loadingError: false,
     restaurants: []
   },
   created: function () {
+  	this.getDay();
 	this.getImage();
   },
   methods: {
+  	getDay: function () {
+  		var day = new Date();
+  		this.todayDay = day.getDay();
+  	},
   	getImage: function () {
 		axios.get(urlRestaurants, { timeout : 10000 })
 			.then(function(res) {
@@ -32,5 +38,11 @@ var app = new Vue({
 		    eventLabel: name
 		});
 	}
+  },
+  filters : {
+  	phone : function(phone){
+  		return phone.replace(/[^0-9]/g, '')
+                .replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
+  	}
   }
 });

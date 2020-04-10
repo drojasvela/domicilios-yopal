@@ -102,7 +102,7 @@
             <h4 class="card__title">{{restaurant.fields.name}}</h4>
             <span class="card__category">{{restaurant.fields.category}}</span>
             <div class="card__phone"><img src="img/phone-icon.svg" class="phone-icon">
-              <a :href="`tel:${restaurant.fields.phone}`" @click="trackGa(restaurant.fields.name)">{{restaurant.fields.phone}}</a>
+              <a :href="`tel:${restaurant.fields.phone}`" @click="trackGa(restaurant.fields.name)">{{restaurant.fields.phone | phone}}</a>
             </div>
           </div>
         </li>
