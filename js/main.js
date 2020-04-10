@@ -18,16 +18,19 @@ var app = new Vue({
   	getImage: function () {
 		axios.get(urlRestaurants, { timeout : 10000 })
 			.then(function(res) {
-				console.clear();
-				// vm.asteroids = res.data.near_earth_objects.slice(0, 100);
-				console.log(res.data.records);
 				app.restaurants = res.data.records;
 				app.loadingPlaces = false;
 			}).catch(function(err) {
-				console.log(err);
 				app.loadingPlaces = false;
 				app.loadingError = true;
 			})
+	},
+	trackGa: function(name) {
+		ga('send', 'event', {
+			eventCategory: 'Restaurants',
+		    eventAction: 'Call',
+		    eventLabel: name
+		});
 	}
   }
 });

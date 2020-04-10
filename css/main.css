@@ -191,6 +191,7 @@ body {
   .skeleton-header {
     width: 160px;
     margin-bottom: 8px;
+    margin-top: 4px;
   }
 
   .skeleton-subheader {
