@@ -32,11 +32,7 @@ var app = new Vue({
 			})
 	},
 	trackGa: function(name) {
-		ga('send', 'event', {
-			eventCategory: 'Restaurants',
-		    eventAction: 'Call',
-		    eventLabel: name
-		});
+		ga('send', 'event', 'Restaurants', 'call', 'La Res');
 	}
   },
   filters : {
