@@ -31,8 +31,8 @@ var app = new Vue({
 				app.loadingError = true;
 			})
 	},
-	trackGa: function(name) {
-		ga('send', 'event', 'Restaurants', 'call', 'La Res');
+	trackGa: function(category, action, name) {
+		gtag('event','click',{'event_category': category,'event_label': action, 'value': name });
 	}
   },
   filters : {

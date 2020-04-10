@@ -102,7 +102,7 @@
             <h4 class="card__title">{{restaurant.fields.name}}</h4>
             <span class="card__category">{{restaurant.fields.category}}</span>
             <div class="card__phone"><img src="img/phone-icon.svg" class="phone-icon">
-              <a :href="`tel:${restaurant.fields.phone}`" @click="trackGa(restaurant.fields.name)">{{restaurant.fields.phone | phone}}</a>
+              <a :href="`tel:${restaurant.fields.phone}`" @click="trackGa('Restaurants', 'call', restaurant.fields.name)">{{restaurant.fields.phone | phone}}</a>
             </div>
           </div>
         </li>
@@ -114,7 +114,7 @@
       </div>
       <div class="add-places">
         <img src="img/location-icon.svg" class="location-icon">
-        <p class="no-margin">Conoces otro restaurante que esté abierto durante la cuarentena? <a href="https://airtable.com/shrZj5a0qd2UhXy5x" target="_blank">Inscríbelo acá</a></p>
+        <p class="no-margin">Conoces otro restaurante que esté abierto durante la cuarentena? <a href="https://airtable.com/shrZj5a0qd2UhXy5x" target="_blank" @click="trackGa('Restaurants', 'add', 'new')">Inscríbelo acá</a></p>
       </div>
     </div>
   </div>
