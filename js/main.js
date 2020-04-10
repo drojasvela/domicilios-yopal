@@ -7,6 +7,7 @@ var app = new Vue({
   data: {
     message: 'Hello Vue!',
     imgPlaceholder: 'http://placekitten.com/g/80/80',
+    loadingPlaces: true,
     restaurants: []
   },
   created: function () {
@@ -20,6 +21,7 @@ var app = new Vue({
 				// vm.asteroids = res.data.near_earth_objects.slice(0, 100);
 				console.log(res.data.records);
 				app.restaurants = res.data.records;
+				app.loadingPlaces = false;
 			})
 	}
   }

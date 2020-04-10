@@ -34,10 +34,61 @@
       <div class="bg-light"></div>
     </header>
     <div class="container">
-      <ul class="list">
+      <ul v-if="loadingPlaces" class="list">
+        <li class="card card__loading">
+          <div class="card__image"></div>
+          <div>
+            <span class="skeleton skeleton-header"></span>
+            <span class="skeleton skeleton-subheader"></span>
+            <span class="skeleton skeleton-phone"></span>
+          </div>
+        </li>
+        <li class="card card__loading">
+          <div class="card__image"></div>
+          <div>
+            <span class="skeleton skeleton-header"></span>
+            <span class="skeleton skeleton-subheader"></span>
+            <span class="skeleton skeleton-phone"></span>
+          </div>
+        </li>
+        <li class="card card__loading">
+          <div class="card__image"></div>
+          <div>
+            <span class="skeleton skeleton-header"></span>
+            <span class="skeleton skeleton-subheader"></span>
+            <span class="skeleton skeleton-phone"></span>
+          </div>
+        </li>
+        <li class="card card__loading">
+          <div class="card__image"></div>
+          <div>
+            <span class="skeleton skeleton-header"></span>
+            <span class="skeleton skeleton-subheader"></span>
+            <span class="skeleton skeleton-phone"></span>
+          </div>
+        </li>
+        <li class="card card__loading">
+          <div class="card__image"></div>
+          <div>
+            <span class="skeleton skeleton-header"></span>
+            <span class="skeleton skeleton-subheader"></span>
+            <span class="skeleton skeleton-phone"></span>
+          </div>
+        </li>
+        <li class="card card__loading">
+          <div class="card__image"></div>
+          <div>
+            <span class="skeleton skeleton-header"></span>
+            <span class="skeleton skeleton-subheader"></span>
+            <span class="skeleton skeleton-phone"></span>
+          </div>
+        </li>
+      </ul>
+      <ul v-else class="list">
         <li class="card" v-for="restaurant in restaurants" :key="restaurant.id" v-cloak>
           <div v-if="restaurant.fields.image" class="card__image" :style="{ backgroundImage : 'url(' + restaurant.fields.image[0].thumbnails.large.url + ')' }"></div>
-          <div v-else class="card__image card__image--placeholder"></div>
+          <div v-else class="card__image card__image--placeholder">
+          </div>
           <div>
             <h4 class="card__title">{{restaurant.fields.name}}</h4>
             <span class="card__category">{{restaurant.fields.category}}</span>
