@@ -14,17 +14,22 @@ var app = new Vue({
   },
   created: function () {
   	this.getDay();
-	this.getImage();
+	this.getPlaces();
   },
   methods: {
   	getDay: function () {
   		var day = new Date();
   		this.todayDay = day.getDay();
   	},
-  	getImage: function () {
+  	getPlaces: function () {
 		axios.get(urlRestaurants, { timeout : 10000 })
 			.then(function(res) {
 				app.restaurants = res.data.records;
+				app.restaurants.forEach(function(item){
+					if (item.fields.image && item.fields.image[0].thumbnails.large.url) {
+						item.imageUrl = item.fields.image[0].thumbnails.large.url;
+					}
+				})
 				app.loadingPlaces = false;
 			}).catch(function(err) {
 				app.loadingPlaces = false;
