@@ -1,5 +1,5 @@
 var apiKey = "keyieOwATKOFQswlE";
-var urlRestaurants = "https://api.airtable.com/v0/appOPS9QgLsqAcPBI/restaurants?api_key=" + apiKey;
+var urlRestaurants = "https://api.airtable.com/v0/appOPS9QgLsqAcPBI/restaurants?sort%5B0%5D%5Bfield%5D=name&sort%5B0%5D%5Bdirection%5D=asc&api_key=" + apiKey;
 
 
 var app = new Vue({
