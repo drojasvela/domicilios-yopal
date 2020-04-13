@@ -29,7 +29,7 @@ var app = new Vue({
 		     this.todayDay = "Martes";
 		    break;
 		  case 3:
-		    this.todayDay = "Miercoles";
+		    this.todayDay = "Miércoles";
 		    break;
 		  case 4:
 		    this.todayDay = "Jueves";

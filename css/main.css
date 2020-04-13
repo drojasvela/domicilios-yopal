@@ -155,8 +155,6 @@ body {
   background: #FFF;
   border-radius: 4px;
   margin-bottom: 8px;
-  padding: 8px;
-  display: flex;
 }
 
 .card--error {
@@ -181,107 +179,123 @@ body {
   animation: skeleton-loading 1s linear infinite;
 }
 
-  .skeleton {
-    display: block;
-    background: #F2F7F7;
-    border-radius: 100px;
-    height: 10px;
-  }
+.skeleton {
+  display: block;
+  background: #F2F7F7;
+  border-radius: 100px;
+  height: 10px;
+}
 
-  .skeleton-header {
-    width: 160px;
-    margin-bottom: 8px;
-    margin-top: 4px;
-  }
+.skeleton-header {
+  width: 160px;
+  margin-bottom: 8px;
+  margin-top: 4px;
+}
 
-  .skeleton-subheader {
-    width: 120px;
-    margin-bottom: 24px;
-  }
+.skeleton-subheader {
+  width: 120px;
+  margin-bottom: 24px;
+}
 
-  .skeleton-phone {
-    width: 100px;
-  }
+.skeleton-phone {
+  width: 100px;
+}
 
-  .card__image {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: 4px;
-    display: block;
-    height: 80px;
-    margin-right: 16px;
-    width: 80px;
-    background-color: #F2F7F7;
-  }
+.card__main-info {
+  display: flex;
+  padding: 8px;
+}
 
-  .card__content {
-    flex-grow: 1;
-  }
+.card__image {
+  background-color: #F2F7F7;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 4px;
+  display: block;
+  flex-shrink: 0;
+  height: 70px;
+  margin-left: 8px;
+  width: 70px;
+}
 
-  .card__image--placeholder {
-    background: #F2F7F7 url(../img/restaurant-placeholder.svg) no-repeat center;
-  }
+.card__content {
+  flex-grow: 1;
+}
 
-  .card__title {
+.card__image--placeholder {
+  background: #F2F7F7 url(../img/restaurant-placeholder.svg) no-repeat center;
+}
+
+.card__title {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+  margin: 0;
+}
+
+.card__category {
+  font-size: 14px;
+  line-height: 14px;
+  opacity: 0.7;
+  display: block;
+  margin-top: 2px;
+}
+
+.card__contact {
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card__phone {
+  display: flex;
+}
+
+  .card__phone a {
+    text-decoration: none;
+    color: #41C36F;
     font-weight: 500;
-    font-size: 18px;
-    line-height: 21px;
-    margin: 0;
+    font-size: 16px;
+    line-height: 19px;
   }
 
-  .card__category {
-    font-size: 14px;
-    line-height: 14px;
+.card__availability {
+  align-self: center;
+  display: flex;
+  font-size: 12px;
+  line-height: 10px;
+}
+
+  .card__availability strong,
+  .card__availability span {
     opacity: 0.7;
+  }
+
+  .av-schedule {
+    margin-left: 8px;
+  }
+
+.card__bottom {
+  border-top: 1px solid #F2F7F7;
+  padding: 8px;
+}
+
+  .card__availability i {
     display: block;
-    margin-top: 2px;
+    height: 10px;
+    width: 10px;
+    border-radius: 100%;
+    margin-right: 4px;
   }
 
-  .card__contact {
-    margin-top: 16px;
-    display: flex;
-    justify-content: space-between;
+  .card__availability--open i {
+    background: #41C36F;
   }
 
-  .card__phone {
-    display: flex;
+  .card__availability--closed i {
+    background: #DC6262;
   }
-
-    .card__phone a {
-      text-decoration: none;
-      color: #41C36F;
-      font-weight: 500;
-      font-size: 16px;
-      line-height: 19px;
-    }
-
-  .card__availability {
-    align-self: center;
-    display: flex;
-    font-size: 12px;
-    line-height: 10px;
-  }
-
-    .card__availability span {
-      opacity: 0.7;
-    }
-
-    .card__availability i {
-      display: block;
-      height: 10px;
-      width: 10px;
-      border-radius: 100%;
-      margin-right: 4px;
-    }
-
-    .card__availability--open i {
-      background: #41C36F;
-    }
-
-    .card__availability--closed i {
-      background: #DC6262;
-    }
 
 .phone-icon {
   margin-right: 8px;

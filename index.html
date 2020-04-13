@@ -44,73 +44,41 @@
     </header>
     <div class="container">
       <ul v-if="loadingPlaces" class="list">
-        <li class="card card__loading">
-          <div class="card__image"></div>
-          <div>
-            <span class="skeleton skeleton-header"></span>
-            <span class="skeleton skeleton-subheader"></span>
-            <span class="skeleton skeleton-phone"></span>
-          </div>
-        </li>
-        <li class="card card__loading">
-          <div class="card__image"></div>
-          <div>
-            <span class="skeleton skeleton-header"></span>
-            <span class="skeleton skeleton-subheader"></span>
-            <span class="skeleton skeleton-phone"></span>
-          </div>
-        </li>
-        <li class="card card__loading">
-          <div class="card__image"></div>
-          <div>
-            <span class="skeleton skeleton-header"></span>
-            <span class="skeleton skeleton-subheader"></span>
-            <span class="skeleton skeleton-phone"></span>
-          </div>
-        </li>
-        <li class="card card__loading">
-          <div class="card__image"></div>
-          <div>
-            <span class="skeleton skeleton-header"></span>
-            <span class="skeleton skeleton-subheader"></span>
-            <span class="skeleton skeleton-phone"></span>
-          </div>
-        </li>
-        <li class="card card__loading">
-          <div class="card__image"></div>
-          <div>
-            <span class="skeleton skeleton-header"></span>
-            <span class="skeleton skeleton-subheader"></span>
-            <span class="skeleton skeleton-phone"></span>
-          </div>
-        </li>
-        <li class="card card__loading">
-          <div class="card__image"></div>
-          <div>
-            <span class="skeleton skeleton-header"></span>
-            <span class="skeleton skeleton-subheader"></span>
-            <span class="skeleton skeleton-phone"></span>
+        <li v-for="index in 5" class="card card__loading">
+          <div class="card__main-info">
+            <div class="card__content">
+              <span class="skeleton skeleton-header"></span>
+              <span class="skeleton skeleton-subheader"></span>
+              <span class="skeleton skeleton-phone"></span>
+            </div>
+            <div class="card__image"></div>
           </div>
         </li>
       </ul>
       <ul v-else class="list">
         <li class="card" v-for="restaurant in restaurants" :key="restaurant.id" v-cloak>
-          <div v-if="restaurant.imageUrl" class="card__image"
-               :style="{ backgroundImage : 'url(' + restaurant.imageUrl + ')' }">
-          </div>
-          <div v-else class="card__image card__image--placeholder">
-          </div>
-          <div class="card__content">
-            <h4 class="card__title">{{restaurant.fields.name}}</h4>
-            <span class="card__category">{{restaurant.fields.category}}</span>
-            <div class="card__contact">
-              <div class="card__phone">
-                <img src="img/phone-icon.svg" class="phone-icon">
-                <a :href="`tel:${restaurant.fields.phone}`" @click="trackGa('Restaurants', 'call ' + restaurant.fields.name, 1)">{{restaurant.fields.phone | phone}}</a>
+          <div class="card__main-info">
+            <div class="card__content">
+              <h4 class="card__title">{{restaurant.fields.name}}</h4>
+              <span class="card__category">{{restaurant.fields.category}}</span>
+              <div class="card__contact">
+                <div class="card__phone">
+                  <img src="img/phone-icon.svg" class="phone-icon">
+                  <a :href="`tel:${restaurant.fields.phone}`" @click="trackGa('Restaurants', 'call ' + restaurant.fields.name, 1)">{{restaurant.fields.phone | phone}}</a>
+                </div>
               </div>
-              <div v-if="restaurant.open" class="card__availability card__availability--open"><i></i><span>Abierto</span></div>
-              <div v-else class="card__availability card__availability--closed"><i></i><span>Cerrado</span></div>
             </div>
+            <div v-if="restaurant.imageUrl" class="card__image"
+                 :style="{ backgroundImage : 'url(' + restaurant.imageUrl + ')' }">
+            </div>
+            <div v-else class="card__image card__image--placeholder"></div>
+          </div>
+          <div class="card__bottom">
+            <div v-if="restaurant.open" class="card__availability card__availability--open">
+              <i></i><strong>Abierto</strong>
+              <span class="av-schedule">{{restaurant.fields.open_hours}}</span>
+            </div>
+            <div v-else class="card__availability card__availability--closed"><i></i><strong>Cerrado</strong></div>
           </div>
         </li>
       </ul>
