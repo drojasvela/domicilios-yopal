@@ -18,8 +18,28 @@ var app = new Vue({
   },
   methods: {
   	getDay: function () {
-  		var day = new Date();
-  		this.todayDay = day.getDay();
+  		switch (new Date().getDay()) {
+		  case 0:
+		    this.todayDay = "Domingo";
+		    break;
+		  case 1:
+		    this.todayDay = "Lunes";
+		    break;
+		  case 2:
+		     this.todayDay = "Martes";
+		    break;
+		  case 3:
+		    this.todayDay = "Miercoles";
+		    break;
+		  case 4:
+		    this.todayDay = "Jueves";
+		    break;
+		  case 5:
+		    this.todayDay = "Viernes";
+		    break;
+		  case 6:
+		    this.todayDay = "Sábado";
+		}
   	},
   	getPlaces: function () {
 		axios.get(urlRestaurants, { timeout : 10000 })
@@ -29,6 +49,17 @@ var app = new Vue({
 				app.restaurants.forEach(function(item){
 					if (item.fields.image && item.fields.image[0].thumbnails.large.url) {
 						item.imageUrl = item.fields.image[0].thumbnails.large.url;
+					}
+
+					if (item.fields.open_days) {
+						var place = item;
+						item.fields.open_days.forEach(function(item) {
+							if (item == app.todayDay) {
+								place.open = true;
+							} else {
+								place.open = false;
+							}
+						});
 					}
 				});
 			}).catch(function(err) {

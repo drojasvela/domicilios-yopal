@@ -100,11 +100,16 @@
           </div>
           <div v-else class="card__image card__image--placeholder">
           </div>
-          <div>
+          <div class="card__content">
             <h4 class="card__title">{{restaurant.fields.name}}</h4>
             <span class="card__category">{{restaurant.fields.category}}</span>
-            <div class="card__phone"><img src="img/phone-icon.svg" class="phone-icon">
-              <a :href="`tel:${restaurant.fields.phone}`" @click="trackGa('Restaurants', 'call ' + restaurant.fields.name, 1)">{{restaurant.fields.phone | phone}}</a>
+            <div class="card__contact">
+              <div class="card__phone">
+                <img src="img/phone-icon.svg" class="phone-icon">
+                <a :href="`tel:${restaurant.fields.phone}`" @click="trackGa('Restaurants', 'call ' + restaurant.fields.name, 1)">{{restaurant.fields.phone | phone}}</a>
+              </div>
+              <div v-if="restaurant.open" class="card__availability card__availability--open"><i></i><span>Abierto</span></div>
+              <div v-else class="card__availability card__availability--closed"><i></i><span>Cerrado</span></div>
             </div>
           </div>
         </li>
