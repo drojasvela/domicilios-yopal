@@ -53,13 +53,7 @@ var app = new Vue({
 
 					if (item.fields.open_days) {
 						var place = item;
-						item.fields.open_days.forEach(function(item) {
-							if (item == app.todayDay) {
-								place.open = true;
-							} else {
-								place.open = false;
-							}
-						});
+						place.open = item.fields.open_days.includes(app.todayDay);
 					}
 				});
 			}).catch(function(err) {
