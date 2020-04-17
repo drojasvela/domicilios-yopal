@@ -39,6 +39,12 @@
         <h3 class="logo no-margin">DomiciliosYopal.com</h3>
         <h1 class="">Restaurantes</h1>
         <p>Este es un listado de restaurantes funcionando durante la cuarentena obligatoria en <strong>Yopal.</strong></p>
+        <ul v-if="showFilters" class="filters">
+          <li v-for="filter in availableFilters" class="filters__item">
+            <input type="checkbox" :id="filter" :value="filter" v-model="activeFilters">
+            <label :for="filter">{{filter}}</label>
+          </li>
+        </ul>
       </div>
       <div class="bg-light"></div>
     </header>
@@ -52,6 +58,8 @@
               <span class="skeleton skeleton-phone"></span>
             </div>
             <div class="card__image"></div>
+          </div>
+          <div class="card__bottom">
           </div>
         </li>
       </ul>

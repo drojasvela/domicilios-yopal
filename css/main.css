@@ -132,7 +132,7 @@ body {
   background: linear-gradient(239.02deg, #82C341 1.18%, #41C385 97.46%);
   color: #FFF;
   padding: 8px 8px 100px;
-  margin-bottom: -80px;
+  margin-bottom: -100px;
   position: relative;
 }
 
@@ -312,6 +312,37 @@ body {
   align-self: flex-start;
   margin-right: 4px;
 }
+
+.filters {
+  list-style: none;
+  margin: 0 -16px;
+  overflow-x: auto;
+  padding: 16px;
+  white-space: nowrap;
+}
+
+  .filters__item {
+    display: inline-block;
+    margin-right: 8px;
+    font-size: 14px;
+  }
+
+  .filters__item label {
+    background: #41C36F;
+    padding: 8px 16px;
+    border-radius: 100px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: block;
+  }
+
+  .filters__item input {
+    display: none;
+  }
+
+  .filters__item input[type=checkbox]:checked + label {
+    color: #41C36F;
+    background: #FFF;
+  } 
 
 @keyframes skeleton-loading{
   0% {
