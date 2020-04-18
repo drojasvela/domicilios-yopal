@@ -61,7 +61,7 @@ var app = new Vue({
 	  				filters = filters + 'FIND(%22' + item + '%22%2Ccategories)%2C';
 	  			}
 
-	  			app.trackGa('filters', item, 1);
+	  			app.trackGa('Restaurants', 'filter', item, 1);
 	  		});
 
 	  		url = urlRestaurants + "&filterByFormula=OR(" + filters + ")";
@@ -103,8 +103,8 @@ var app = new Vue({
 
 		this.showFilters = true;
 	},
-	trackGa: function(category, action, name) {
-		gtag('event','click',{'event_category': category,'event_label': action, 'value': name });
+	trackGa: function(category, action, label, value) {
+		gtag('event', action, {'event_category': category,'event_label': label, 'value': value });
 	}
   },
   watch: {
