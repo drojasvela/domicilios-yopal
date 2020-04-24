@@ -64,7 +64,12 @@
         </li>
       </ul>
       <ul v-else class="list">
-        <li class="card" v-for="restaurant in restaurants" :key="restaurant.id" v-cloak>
+        <li class="card"
+            v-for="(restaurant, index) in restaurants"
+            :key="restaurant.id"
+            @click="showDetails($event, index, true)"
+            :class="{'card--active': restaurant.is_active}"
+            v-cloak>
           <div class="card__main-info">
             <div class="card__content">
               <h4 class="card__title">{{restaurant.fields.name}}</h4>
@@ -72,7 +77,7 @@
               <div class="card__contact">
                 <div class="card__phone">
                   <img src="img/phone-icon.svg" class="phone-icon">
-                  <a :href="`tel:${restaurant.fields.phone}`" @click="trackGa('Restaurants', 'call',  'call - ' + restaurant.fields.name, 1)">{{restaurant.fields.phone | phone}}</a>
+                  <a :href="`tel:${restaurant.fields.phone}`" @click.stop="trackGa('Restaurants', 'call',  'call - ' + restaurant.fields.name, 1)">{{restaurant.fields.phone | phone}}</a>
                 </div>
               </div>
             </div>
@@ -88,6 +93,31 @@
             </div>
             <div v-else class="card__availability card__availability--closed"><i></i><strong>Cerrado</strong></div>
           </div>
+          <div class="card__expanded" v-if="restaurant.is_active">
+            <ul class="menu-gallery" v-if="restaurant.fields.menu" :class="{'menu-gallery--single-element': restaurant.fields.menu.length < 2 }">
+              <li v-for="image in restaurant.fields.menu" class="menu-gallery__page">
+                <img v-if="image.thumbnails && image.thumbnails.large" :src="image.thumbnails.large.url" alt="">
+                <img v-else :src="image.url" alt="">
+              </li>
+            </ul>
+            <div v-else class="menu-empty-state">
+              <img src="img/menu-empty-state.svg" alt="">
+              <p>No tenemos el menú de este restaurante</p>
+              <a href="https://airtable.com/shrRJTAEPNrWRgh3a" target="_blank" @click.stop="trackGa('Restaurants', 'add',  'menu')">Agrégalo aquí</a>
+            </div>
+            <ul class="card-actions">
+              <li>
+                <a class="btn btn-primary" :href="`tel:${restaurant.fields.phone}`" @click.stop="trackGa('Restaurants', 'call',  'call card exp - ' + restaurant.fields.name, 1)">
+                  <img src="img/phone-icon-white.svg">
+                </a>
+              </li>
+              <li>
+                <a class="btn btn-secondary" @click.stop="showDetails($event, index, false)">
+                  <img src="img/close-icon.svg">
+                </a>
+              </li>
+            </ul>
+          </div>
         </li>
       </ul>
       <div v-if="loadingError" class="card card--error">
@@ -99,6 +129,7 @@
         <img src="img/location-icon.svg" class="location-icon">
         <p class="no-margin">Conoces otro restaurante que esté abierto durante la cuarentena? <a href="https://airtable.com/shrZj5a0qd2UhXy5x" target="_blank" @click="trackGa('Restaurants', 'add', 'new')">Inscríbelo acá</a></p>
       </div>
+      <div class="overlay" v-if="showOverlay"></div>
     </div>
   </div>
   <script src="js/vendor/modernizr-3.8.0.min.js"></script>

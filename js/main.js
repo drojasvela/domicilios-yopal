@@ -13,7 +13,8 @@ var app = new Vue({
     showFilters: false,
     restaurants: [],
     availableFilters: [],
-    activeFilters: []
+    activeFilters: [],
+    showOverlay: false
   },
   created: function () {
   	this.getDay();
@@ -103,6 +104,22 @@ var app = new Vue({
 
 		this.showFilters = true;
 	},
+	showDetails: function(event, index, toggle) {
+		var el = event.target;
+		var place = this.restaurants[index];
+
+		place.is_active = toggle;
+		this.showOverlay = toggle;
+
+		this.$set(this.restaurants, index, place);
+
+		if (toggle) {
+			app.trackGa('Restaurants', 'card-expand', 'expand - ' + place.fields.name, 1);
+		} else {
+			app.trackGa('Restaurants', 'card-collapse', 'collapse - ' + place.fields.name, 1);
+		}
+
+	},
 	trackGa: function(category, action, label, value) {
 		gtag('event', action, {'event_category': category,'event_label': label, 'value': value });
 	}
@@ -110,7 +127,14 @@ var app = new Vue({
   watch: {
   	activeFilters: function () {
   		this.getPlaces();
-  	}
+  	},
+  	showOverlay: function() {
+      if(this.showOverlay){
+        document.documentElement.style.overflow = 'hidden'
+        return
+      }
+      document.documentElement.style.overflow = 'auto'
+    }
   },
   filters : {
   	phone : function(phone){
