@@ -154,6 +154,7 @@ body {
 .card {
   background: #FFF;
   border-radius: 4px;
+  cursor: pointer;
   margin-bottom: 8px;
 }
 
@@ -184,6 +185,7 @@ body {
   max-width: 600px;
   margin: auto;
   bottom: 8px;
+  cursor: auto;
 }
 
 .card-actions {
@@ -362,6 +364,10 @@ body {
     .menu-gallery__page img {
       max-width: 400px;
       max-height: 58vh;
+    }
+
+    .menu-gallery--single-element img {
+      max-width: 90vw;
     }
 
 .filters {
@@ -555,7 +561,13 @@ body {
     bottom: auto;
     top: 40px;
   }
+
+  .menu-gallery--single-element img {
+      max-width: 580px;
+  }
 }
+
+
 
 @media print,
   (-webkit-min-device-pixel-ratio: 1.25),
